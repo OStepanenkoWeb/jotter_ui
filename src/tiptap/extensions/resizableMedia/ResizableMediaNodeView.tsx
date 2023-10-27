@@ -77,7 +77,7 @@ export const ResizableMediaNodeView = ({
       resizableImgRef.current.onload = () => {
         // Aspect Ratio from its original size
         setAspectRatio(
-          (resizableImgRef.current as HTMLImageElement).naturalWidth /
+          (resizableImgRef.current as HTMLImageElement)?.naturalWidth /
             (resizableImgRef.current as HTMLImageElement).naturalHeight
         );
       };

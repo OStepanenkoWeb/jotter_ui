@@ -13,7 +13,6 @@ interface InternalCustomAxiosRequestConfig extends AxiosRequestConfig {
 }
 
 const client: AxiosInstance = axios.create({
-  withCredentials: true,
   baseURL: process.env.REACT_APP_API,
 });
 
