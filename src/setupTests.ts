@@ -6,6 +6,22 @@ import "@testing-library/jest-dom/extend-expect";
 
 // src/setupTest.js;
 import { server } from "./mocks/server";
+
+jest.mock('react-i18next', () => ({
+    useTranslation: () => {
+        return {
+            t: (str: string) => str,
+            i18n: {
+                changeLanguage: () => new Promise(() => {}),
+            },
+        }
+    },
+}))
+
+jest.mock('i18next', () => ({
+    changeLanguage: () => new Promise(() => {}),
+}))
+
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
 
