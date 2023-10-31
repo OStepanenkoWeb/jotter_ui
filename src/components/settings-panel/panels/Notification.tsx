@@ -6,9 +6,11 @@ import { useUserData } from "../../../services/useUserData";
 import { useAppSelector } from "../../../app/hooks";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../slice/userSlice";
+import { useTranslation } from "react-i18next";
 
 const Notification = () => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const userInfo = useAppSelector((state) => state.user.userInfo);
   const [mode, setMode] = useState("");
   const { mutate: mutateIsDarkMode } = useUserData.useUpdateIsDarkModeData();
@@ -87,11 +89,11 @@ const Notification = () => {
   return (
     <div className={`${styles.panel} ${styles[theme]}`}>
       <div>
-        <div className={`${styles.title}`}>My notifications</div>
+        <div className={`${styles.title}`}>{t('My notifications')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Mobile push notifications</p>
+              <p>{t('Mobile push notifications')}</p>
               <p>
                 Receive push notifications on mentions and comments via your
                 mobile app
@@ -106,7 +108,7 @@ const Notification = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Email notifications</p>
+              <p>{t('Email notifications')}</p>
               <p>
                 Receive email updates, including mentions and comment replies
               </p>
@@ -120,7 +122,7 @@ const Notification = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Slack notifications</p>
+              <p>{t('Slack notifications')}</p>
               <p>
                 Receive notifications in your Slack workspace when you're
                 mentioned in a page, database property, or comment
@@ -138,11 +140,11 @@ const Notification = () => {
         </div>
       </div>
       <div>
-        <div className={`${styles.title}`}>My settings</div>
+        <div className={`${styles.title}`}>{t('My settings')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Appearance</p>
+              <p>{t('Appearance')}</p>
               <p>Customize how Notion looks on your device.</p>
             </div>
             <div className={`${styles.control}`}>
@@ -162,7 +164,7 @@ const Notification = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Open on start</p>
+              <p>{t('Open on start')}</p>
               <p>
                 Choose what to show when Notion starts or when you switch
                 workspaces.
@@ -186,29 +188,29 @@ const Notification = () => {
             <div className={`${styles.key}`}>
               <p>Cookie settings</p>
               <p>
-                Customize cookies. See{" "}
+                {t('Customize cookies')}. {t('See')}{" "}
                 <span>
                   <a
                     href="https://www.notion.so/Cookie-Notice-bc186044eed5488a8387a9e94b14e58c"
                     target="blank"
                   >
-                    Cookie Notice
+                    {t('Cookie Notice')}
                   </a>
                 </span>{" "}
-                for details.
+                {t('for details')}.
               </p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.select}`}>
                 <select name="cookie" id="cookie" disabled>
-                  <option value="customize">Customize</option>
+                  <option value="customize">{t('Customize')}</option>
                 </select>
               </label>
             </div>
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Show my view history</p>
+              <p>{t('Show my view history')}</p>
               <p>
                 People with edit or full access will be able to see when you’ve
                 viewed a page.{" "}

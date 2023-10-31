@@ -7,6 +7,7 @@ import styles from "./pathDisplay.module.scss";
 import { request } from "../../lib/axios";
 import { setPage } from "../../slice/pageSlice";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 type PathDisplayProps = {
   id: string;
@@ -14,6 +15,7 @@ type PathDisplayProps = {
 
 const PathDisplay: React.FC<PathDisplayProps> = ({ id }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
   const workspaceInfo = useAppSelector(
@@ -117,7 +119,7 @@ const PathDisplay: React.FC<PathDisplayProps> = ({ id }) => {
           <div className={`${styles.icon}`}>
             <FilledLock />
           </div>
-          Locked
+          {t('Locked')}
         </div>
       ) : (
         ""

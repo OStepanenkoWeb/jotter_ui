@@ -7,6 +7,7 @@ import { logout } from "../../slice/userSlice";
 import CreateWorkspace from "./CreateWorkspace";
 import styles from "./headerDropdown.module.scss";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type HeaderDropdownProps = {
   openHeader: boolean;
@@ -20,6 +21,7 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
   onCloseSwitcherDropDown,
 }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [openCreateWorkspace, setOpenCreateWorkspace] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,13 +54,13 @@ const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
             <div className={`${styles.icon}`}>
               <SquarePlusIcon />
             </div>
-            <p>Join or create workspace</p>
+            <p>{t('Join or create workspace')}</p>
           </div>
           <div className={`${styles.tab}`} onClick={handleLogout}>
             <div className={`${styles.icon}`}>
               <CircleCrossIcon />
             </div>
-            <p>Log out</p>
+            <p>{t('Log out')}</p>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { setPage } from "../../slice/pageSlice";
 import { useAppSelector } from "../../app/hooks";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type PageDropdownProps = {
   workspaceId: string;
@@ -25,6 +26,7 @@ const PageDropdown: React.FC<PageDropdownProps> = ({
   pageId,
 }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [openCreatePage, setOpenCreatePage] = useState(false);
   const [parentPageId, setParentPageId] = useState("");
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
@@ -73,12 +75,12 @@ const PageDropdown: React.FC<PageDropdownProps> = ({
   return (
     <>
       {isLoading ? (
-        <h3>Loading...</h3>
+        <h3>{t('Loading')}...</h3>
       ) : (
         <div className={`${styles.page_dropdown} ${styles[theme]}`}>
           {!childPagesOrNull ? (
             <div className={`${styles.no_content}`}>
-              <p>No pages inside</p>
+              <p>{t('No pages inside')}</p>
             </div>
           ) : (
             <div className={`${styles.child_pages}`}>
