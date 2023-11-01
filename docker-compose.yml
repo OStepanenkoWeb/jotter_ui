@@ -1,0 +1,17 @@
+version: '3'
+services:
+  front:
+    image: node:18.12.0-buster
+    container_name: course_book_front
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./:/app"
+    command: bash -c "npm install && npm run start"
+    working_dir: "/app"
+    networks:
+      - course_book_front
+
+networks:
+  course_book_front:
+    driver: bridge
