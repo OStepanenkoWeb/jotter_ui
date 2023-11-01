@@ -28,6 +28,7 @@ import Identity from "./panels/Identity";
 import Connections from "./panels/Connections";
 import Import from "./panels/Import";
 import styles from "./settingsPanel.module.scss";
+import { useTranslation } from "react-i18next";
 
 type SettingsPanelProps = {
   open: boolean;
@@ -36,6 +37,7 @@ type SettingsPanelProps = {
 
 const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const userInfo = useAppSelector((state) => state.user.userInfo);
   const [activeTab, setActiveTab] = useState("my-account");
 
@@ -54,7 +56,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
       >
         <div className={`${styles.sidebar}`}>
           <div className={`${styles.account}`}>
-            <div className={`${styles.title}`}>Account</div>
+            <div className={`${styles.title}`}>{t('Account')}</div>
             <div className={`${styles.info_tab}`}>
               <div className={`${styles.icon}`}>
                 <img src={`${userInfo?.profilePicture.url}`} alt="dp" />
@@ -77,7 +79,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <UserIcon />
               </div>
-              <p>My account</p>
+              <p>{t('My account')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -88,7 +90,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <NotificationIcon />
               </div>
-              <p>My notifications & settings</p>
+              <p>{t('My notifications & settings')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -99,7 +101,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <ConnectAppIcon />
               </div>
-              <p>My connections</p>
+              <p>{t('My connections')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -110,7 +112,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <SettingsLanguageIcon />
               </div>
-              <p>Language & region</p>
+              <p>{t('Language & region')}</p>
             </div>
           </div>
           <div className={`${styles.workspace}`}>
@@ -124,7 +126,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <SettingsOutlineIcon />
               </div>
-              <p>Settings</p>
+              <p>{t('Settings')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -135,7 +137,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <TeamspacesIcon />
               </div>
-              <p>Teamspaces</p>
+              <p>{t('Teamspaces')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -146,7 +148,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <MembersIcon />
               </div>
-              <p>Members</p>
+              <p>{t('Members')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -157,7 +159,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <UpgradeIcon />
               </div>
-              <p>Upgrade</p>
+              <p>{t('Upgrade')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -168,7 +170,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <BillingIcon />
               </div>
-              <p>Billing</p>
+              <p>{t('Billing')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -179,7 +181,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <SecurityIcon />
               </div>
-              <p>Security</p>
+              <p>{t('Security')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -190,7 +192,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <IdentityIcon />
               </div>
-              <p>Identity & Provisioning</p>
+              <p>{t('Identity & Provisioning')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -201,7 +203,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <ConnectionIcon />
               </div>
-              <p>Connections</p>
+              <p>{t('Connections')}</p>
             </div>
             <div
               className={`${styles.tabs} ${
@@ -212,7 +214,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
               <div className={`${styles.icon}`}>
                 <ImportIcon />
               </div>
-              <p>Import</p>
+              <p>{t('Import')}</p>
             </div>
           </div>
         </div>

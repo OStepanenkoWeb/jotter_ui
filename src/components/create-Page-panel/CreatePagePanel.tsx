@@ -26,6 +26,7 @@ import { getRandomPhoto } from "../../utils/randomImage";
 import ChangeNewPageCoverPanel from "./cover-panel/ChangeNewPageCoverPanel";
 import { NewPageTiptap } from "../../tiptap/NewPageTiptap";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type CreatePageProps = {
   open: boolean;
@@ -39,6 +40,7 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
   parentPageId,
 }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const { pageSettings, content, coverPicture, setCoverPicture } =
     useContext(NewPageContext);
   const [favorite, setFavorite] = useState(false);
@@ -224,7 +226,7 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
               </div>
               <div className={`${styles.add_to}`}>
                 <div className={`${styles.text}`}>
-                  <p>Add to</p>
+                  <p>{t('Add to')}</p>
                 </div>
                 <div className={`${styles.parent_page_icon}`}>
                   {pageMetaData ? (
@@ -242,14 +244,14 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
                   {pageMetaData ? (
                     <p>{pageMetaData.title}</p>
                   ) : (
-                    <p>Private Pages</p>
+                    <p>{t('Private Pages')}</p>
                   )}
                 </div>
               </div>
             </div>
             <div className={`${styles.right_options}`}>
               <div className={`${styles.tab}`}>
-                <p>Share</p>
+                <p>{t('Share')}</p>
               </div>
               <div className={`${styles.icon} ${styles.invalid_icon}`}>
                 <CommentIcon />
@@ -302,13 +304,13 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
                     setOpenChangeCover(true);
                   }}
                 >
-                  Change cover
+                  {t('Change cover')}
                 </div>
                 <div
                   className={`${styles.image_option}`}
                   onClick={handleReposition}
                 >
-                  {repositionEnabled ? "Save" : "Reposition"}
+                  {t(repositionEnabled ? "Save" : "Reposition")}
                 </div>
               </div>
             ) : (
@@ -340,7 +342,7 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
                     }}
                   >
                     <AddIconIcon />
-                    <p>Add icon</p>
+                    <p>{t('Add icon')}</p>
                   </div>
                 ) : null}
                 {coverPicture.url === "" ? (
@@ -349,7 +351,7 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
                     onClick={handleAddCover}
                   >
                     <AddCoverIcon />
-                    <p>Add cover</p>
+                    <p>{t('Add cover')}</p>
                   </div>
                 ) : (
                   ""
@@ -374,7 +376,7 @@ const CreatePagePanel: React.FC<CreatePageProps> = ({
             </div>
           </div>
           <div className={`${styles.footer}`}>
-            <button onClick={handleCreatePage}>Save</button>
+            <button onClick={handleCreatePage}>{t('Save')}</button>
           </div>
         </div>
       </div>

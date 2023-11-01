@@ -29,6 +29,7 @@ import { setPage } from "../../slice/pageSlice";
 import { request } from "../../lib/axios";
 import { setWorkspace } from "../../slice/workspaceSlice";
 import { useQueryClient } from "react-query";
+import { useTranslation } from "react-i18next";
 
 type PageOptionsProps = {
   open: boolean;
@@ -53,6 +54,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
   onFavoriteClick,
 }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
   const workspaceInfo = useAppSelector(
     (state) => state.workspace.workspaceInfo
@@ -323,7 +325,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
           }}
         >
           <div className={`${styles.style_container}`}>
-            <p className={`${styles.style}`}>Style</p>
+            <p className={`${styles.style}`}>{t('Style')}</p>
             <div className={`${styles.fonts}`}>
               <div
                 className={`${styles.default}  ${
@@ -357,7 +359,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
           <div className={`${styles.text}`}>
             <div className={`${styles.value_control}`}>
               <div className={`${styles.key}`}>
-                <p>Small text</p>
+                <p>{t('Small text')}</p>
               </div>
               <div className={`${styles.control}`}>
                 <label className={`${styles.switch}`}>
@@ -372,7 +374,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
             </div>
             <div className={`${styles.value_control}`}>
               <div className={`${styles.key}`}>
-                <p>Full width</p>
+                <p>{t('Full width')}</p>
               </div>
               <div className={`${styles.control}`}>
                 <label className={`${styles.switch}`}>
@@ -392,11 +394,11 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <LoopIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Turn into wiki</p>
-                <p>Organize by owner, tags, verification, and more</p>
+                <p>{t('Turn into wiki')}</p>
+                <p>{t('Organize by owner')}</p>
               </div>
               <div className={`${styles.new_button}`}>
-                <p>new</p>
+                <p>{t('new')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -404,7 +406,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <MoveToIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Move To</p>
+                <p>{t('Move To')}</p>
               </div>
             </div>
           </div>
@@ -414,7 +416,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <CustomizeIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Customize page</p>
+                <p>{t('Customize page')}</p>
               </div>
             </div>
             <div className={`${styles.tab}`} onClick={handleOnLockClick}>
@@ -423,9 +425,9 @@ const PageOptions: React.FC<PageOptionsProps> = ({
               </div>
               <div className={`${styles.title}`}>
                 {pageInfo?.pageSettings.lock ? (
-                  <p>Unlock page</p>
+                  <p>{t('Unlock page')}</p>
                 ) : (
-                  <p>Lock page</p>
+                  <p>{t('Lock page')}</p>
                 )}
               </div>
             </div>
@@ -437,9 +439,9 @@ const PageOptions: React.FC<PageOptionsProps> = ({
               </div>
               <div className={`${styles.title}`}>
                 {favorite ? (
-                  <p>Remove from Favorites</p>
+                  <p>{t('Remove from Favorites')}</p>
                 ) : (
-                  <p>Add to Favorites</p>
+                  <p>{t('Add to Favorites')}</p>
                 )}
               </div>
             </div>
@@ -448,7 +450,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <LinkIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Copy link</p>
+                <p>{t('Copy link')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -456,7 +458,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <DuplicateIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Duplicate</p>
+                <p>{t('Duplicate')}</p>
               </div>
             </div>
           </div>
@@ -466,7 +468,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <UndoIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Undo</p>
+                <p>{t('Undo')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -474,7 +476,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <PageHistortyIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Page history</p>
+                <p>{t('Page history')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -482,7 +484,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <PageAnalyticsIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Page analytics</p>
+                <p>{t('Page analytics')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -490,7 +492,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <ShowDeletedPagesIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Show deleted pages</p>
+                <p>{t('Show deleted pages')}</p>
               </div>
             </div>
             <div className={`${styles.tab}`} onClick={handleDelete}>
@@ -498,7 +500,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <DeleteIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Delete</p>
+                <p>{t('Delete')}</p>
               </div>
             </div>
           </div>
@@ -508,7 +510,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <ImportIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Import</p>
+                <p>{t('Import')}</p>
               </div>
             </div>
             <div className={`${styles.tab} ${styles.not_allowed}`}>
@@ -516,7 +518,7 @@ const PageOptions: React.FC<PageOptionsProps> = ({
                 <ExportIcon />
               </div>
               <div className={`${styles.title}`}>
-                <p>Export</p>
+                <p>{t('Export')}</p>
               </div>
             </div>
           </div>

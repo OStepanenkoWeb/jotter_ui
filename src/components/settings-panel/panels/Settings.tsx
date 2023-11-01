@@ -9,6 +9,7 @@ import { request } from "../../../lib/axios";
 import { setUser } from "../../../slice/userSlice";
 import EmojiSelector from "./EmojiSelector";
 import { setPage } from "../../../slice/pageSlice";
+import { useTranslation } from "react-i18next";
 
 interface WorkspaceDataType {
   workspaceId: string;
@@ -19,6 +20,7 @@ interface WorkspaceDataType {
 
 const Settings = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const { mutate: mutateUpdateWorkspaceName } =
     useWorkspaceData.useUpdateWorkspaceNameData();
@@ -192,11 +194,11 @@ const Settings = () => {
     <>
       <div className={`${styles.panel} ${styles[theme]}`}>
         <div>
-          <div className={`${styles.title}`}>Workspace settings</div>
+          <div className={`${styles.title}`}>{t('Workspace settings')}</div>
           <div className={`${styles.body}`}>
             <div className={`${styles.container}`}>
               <div className={`${styles.change_name}`}>
-                <p>Name</p>
+                <p>{t('Name')}</p>
                 <form onSubmit={handleSubmit}>
                   <input
                     type="text"
@@ -204,7 +206,7 @@ const Settings = () => {
                     value={name}
                     onChange={handleNameChange}
                   />
-                  <button type="submit">Change name</button>
+                  <button type="submit">{t('Change name')}</button>
                 </form>
                 <p>
                   You can use your organization or company name. Keep it simple.

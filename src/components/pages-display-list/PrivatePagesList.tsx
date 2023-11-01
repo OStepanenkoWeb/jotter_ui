@@ -15,9 +15,11 @@ import { PageType } from "../../common/types/Workspace";
 import { checkSameTitles } from "../../utils/checkSameTitles";
 import { NavLink } from "react-router-dom";
 import { checkSameWorkspace } from "../../utils/checkSameWorkspace";
+import { useTranslation } from "react-i18next";
 
 const PrivatePagesList = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const dragItem = React.useRef<any>(null);
   const dragOverItem = React.useRef<any>(null);
   const workspaceInfo = useAppSelector(
@@ -184,7 +186,7 @@ const PrivatePagesList = () => {
   return (
     <>
       <div className={`${styles.display_container} ${styles[theme]}`}>
-        <div className={`${styles.title}`}>Private</div>
+        <div className={`${styles.title}`}>{t('Private')}</div>
         {pagesMetaData?.map((item, index) => (
           <div
             className={`${styles.page_tab} ${

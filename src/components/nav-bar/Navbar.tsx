@@ -18,6 +18,7 @@ import { PageType } from "../../common/types/Page";
 import { setPage } from "../../slice/pageSlice";
 import { setUser } from "../../slice/userSlice";
 import { request } from "../../lib/axios";
+import { useTranslation } from "react-i18next";
 
 type FavoritePageType = {
   id: string;
@@ -30,6 +31,7 @@ type FavoritePageType = {
 
 const Navbar = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const { leftOpen, toggleSidebar } = useContext(SidebarLogicContext);
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
   const userInfo = useAppSelector((state) => state.user.userInfo);
@@ -144,7 +146,7 @@ const Navbar = () => {
             </p>
           </div>
           <div className={`${styles.share}`}>
-            <p>Share</p>
+            <p>{t('Share')}</p>
           </div>
           <div
             id="comment"

@@ -11,6 +11,7 @@ import AddAccount from "./AddAccount";
 import { useNavigate } from "react-router-dom";
 import { useWorkspaceData } from "../../services/useWorkspaceData";
 import { useUserData } from "../../services/useUserData";
+import { useTranslation } from "react-i18next";
 
 type SwitcherDropdownProps = {
   open: boolean;
@@ -22,6 +23,7 @@ const SwitcherDropdown: React.FC<SwitcherDropdownProps> = ({
   onClose,
 }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [openHeaderDropdown, setOpenHeaderDropdown] = useState<boolean>(false);
   const [openAddAccount, setOpenAddAccount] = useState<boolean>(false);
   const userInfo = useAppSelector((state) => state.user.userInfo);
@@ -97,13 +99,13 @@ const SwitcherDropdown: React.FC<SwitcherDropdownProps> = ({
                 setOpenAddAccount(true);
               }}
             >
-              Add another account
+              {t('Add another account')}
             </div>
             <div className={`${styles.option}`} onClick={handleLogout}>
-              Log out
+              {t('Log out')}
             </div>
             <div className={`${styles.option}`} onClick={handleGetMac}>
-              Get Mac app
+              {t('Get Mac app')}
             </div>
           </div>
         </div>

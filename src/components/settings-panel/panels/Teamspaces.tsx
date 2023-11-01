@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 import styles from "./account.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Teamspaces = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <div className={`${styles.panel} ${styles[theme]}`}>
       <div>
-        <div className={`${styles.title}`}>Teamspaces settings</div>
+        <div className={`${styles.title}`}>{t('Teamspaces settings')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>

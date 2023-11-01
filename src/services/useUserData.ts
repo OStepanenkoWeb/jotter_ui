@@ -33,6 +33,16 @@ type updateIsDarkModeDataType = {
   userId: string;
 };
 
+export enum LocaleType {
+  RU = 'ru',
+  EN = 'en'
+}
+
+type updateLocaleType = {
+  locale: LocaleType;
+  userId: string;
+};
+
 type deleteUserDataType = {
   userId: string;
 };
@@ -96,6 +106,16 @@ export class useUserData {
   };
 
   static updateIsDarkMode = async (data: updateIsDarkModeDataType) => {
+    const response = await request({
+      url: `/users/${data.userId}`,
+      method: "patch",
+      data,
+    });
+
+    return response.data;
+  };
+
+  static updateLocale = async (data: updateLocaleType) => {
     const response = await request({
       url: `/users/${data.userId}`,
       method: "patch",
@@ -174,6 +194,15 @@ export class useUserData {
 
   static useUpdateIsDarkModeData = () => {
     return useMutation(useUserData.updateIsDarkMode, {
+      onSuccess: (data) => {
+        return data;
+      },
+      onError: (error: AxiosError) => {},
+    });
+  };
+
+  static useUpdateLocaleData = () => {
+    return useMutation(useUserData.updateLocale, {
       onSuccess: (data) => {
         return data;
       },

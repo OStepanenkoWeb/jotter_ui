@@ -198,13 +198,16 @@
 
         .select {
           select {
-            cursor: not-allowed;
             outline: none;
             font-size: 14px;
             border: none;
             background-color: $background-primary;
             color: $dark-color-tertiary;
             width: 85px;
+
+            &:disabled {
+              cursor: not-allowed;
+            }
           }
         }
 

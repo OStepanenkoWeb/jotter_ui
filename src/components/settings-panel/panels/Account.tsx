@@ -9,9 +9,11 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../../config/firebase";
 import { v4 } from "uuid";
 import styles from "./account.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Account = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const userInfo = useAppSelector((state) => state.user.userInfo);
   const [name, setName] = useState("");
 
@@ -102,18 +104,18 @@ const Account = () => {
   return (
     <div className={`${styles.panel} ${styles[theme]}`}>
       <div>
-        <div className={`${styles.title}`}>My profile</div>
+        <div className={`${styles.title}`}>{t('My profile')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.container}`}>
             <div className={`${styles.profile_picture}`}>
               <label htmlFor="file-upload" className={`${styles.file_upload}`}>
                 <img src={userInfo?.profilePicture.url} alt="dp" />
               </label>
-              <p>Add Photo</p>
+              <p>{t('Add Photo')}</p>
               <input id="file-upload" type="file" onChange={handleFileUpload} />
             </div>
             <div className={`${styles.change_name}`}>
-              <p>Preferred name</p>
+              <p>{t('Preferred name')}</p>
               <form onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -121,7 +123,7 @@ const Account = () => {
                   value={name}
                   onChange={handleNameChange}
                 />
-                <button type="submit">Change name</button>
+                <button type="submit">{t('Change name')}</button>
               </form>
             </div>
           </div>
@@ -136,13 +138,13 @@ const Account = () => {
               <p>{userInfo?.email}</p>
             </div>
             <div className={`${styles.control}`}>
-              <button>Change email</button>
+              <button>{t('Change email')}</button>
             </div>
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Password</p>
-              <p>Set a permanent password to login to your account.</p>
+              <p>{t('Password')}</p>
+              <p>{t('Set password')}</p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.switch}`}>
@@ -153,10 +155,9 @@ const Account = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>2-step verification</p>
+              <p>{t('2 - step verification')}</p>
               <p>
-                Add an additional layer of security to your account during
-                login.
+                {t('2-step description')}
               </p>
             </div>
             <div className={`${styles.control}`}>
@@ -173,11 +174,9 @@ const Account = () => {
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Support access</p>
+              <p>{t('Support access')}</p>
               <p>
-                Grant Notion support temporary access to your account so we can
-                troubleshoot problems or recover content on your behalf. You can
-                revoke access at any time.
+                {t('Support access description')}
               </p>
             </div>
             <div className={`${styles.control}`}>
@@ -189,10 +188,9 @@ const Account = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Log out of all devices</p>
+              <p>{t('Log out of all devices')}</p>
               <p>
-                Log out of all other active sessions on other devices besides
-                this one.
+                {t('Log out of all devices description')}
               </p>
             </div>
             <div className={`${styles.control} ${styles.not_allowed}`}>
@@ -203,10 +201,9 @@ const Account = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p className={`${styles.danger}`}>Delete my account</p>
+              <p className={`${styles.danger}`}>{t('Delete my account')}</p>
               <p>
-                Permanently delete the account and remove access from all
-                workspace.
+                {t('Permanently delete description')}
               </p>
             </div>
             <div className={`${styles.control}`}>

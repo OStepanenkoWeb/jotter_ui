@@ -1,4 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { changeLanguage } from "i18next";
+import { LocaleType } from "../services/useUserData";
 
 export type workspaceType = {
   workspaceId: string;
@@ -12,6 +14,7 @@ export interface UserState {
   name: string;
   email: string;
   isDarkMode: boolean;
+  locale: LocaleType;
   profilePicture: {
     url: string;
   };
@@ -35,6 +38,7 @@ const userSlice = createSlice({
     setUser: (state, action: PayloadAction<UserState>) => {
       state.userInfo = action.payload;
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
+      changeLanguage(action.payload.locale || LocaleType.RU)
     },
     logout: (state) => {
       state.userInfo = null;
