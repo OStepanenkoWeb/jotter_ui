@@ -50,7 +50,7 @@ const Navbar = () => {
 
   const formatedTime = (createdAt: Date) => {
     const time = getFormattedTimeDifference(createdAt, currentTime);
-    return time;
+    return time.replaceAll('just now', t('just now')).split(' ').map(part => t(part)).join(' ');
   };
 
   useEffect(() => {
@@ -139,7 +139,7 @@ const Navbar = () => {
         <div id="options" className={`${styles.main_options}`}>
           <div className={`${styles.edited_at}`}>
             <p>
-              Edited{" "}
+              {t('Edited')}{" "}
               {pageInfo?.updatedAt
                 ? formatedTime(pageInfo.updatedAt)
                 : formatedTime(pageInfo?.createdAt!)}

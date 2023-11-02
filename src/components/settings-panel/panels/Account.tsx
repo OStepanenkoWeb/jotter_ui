@@ -130,7 +130,7 @@ const Account = () => {
         </div>
       </div>
       <div>
-        <div className={`${styles.title}`}>Account security</div>
+        <div className={`${styles.title}`}>{t('Account security')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
@@ -170,7 +170,7 @@ const Account = () => {
         </div>
       </div>
       <div>
-        <div className={`${styles.title}`}>Support</div>
+        <div className={`${styles.title}`}>{t('Support')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>

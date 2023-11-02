@@ -14,18 +14,17 @@ const Teamspaces = () => {
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Default teamspaces</p>
+              <p>{t('Default teamspaces')}</p>
               <p>
-                Choose teamspaces that all new and current workspace members
-                will automatically join
+                {t('Default teamspaces description')}
               </p>
             </div>
           </div>
           <div className={`${styles.divider}`}></div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Limit teamspace creation to only workspace owners</p>
-              <p>Only allow workspace owners to create teamspaces</p>
+              <p>{t('Limit teamspace creation to only workspace owners')}</p>
+              <p>{t('Only allow workspace owners to create teamspaces')}</p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.switch}`}>
@@ -37,8 +36,8 @@ const Teamspaces = () => {
           <div className={`${styles.divider}`}></div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Manage teamspaces</p>
-              <p>Manage all teamspaces you have access here</p>
+              <p>{t('Manage teamspaces')}</p>
+              <p>{t('Manage all teamspaces you have access here')}</p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.switch}`}>
