@@ -10,8 +10,11 @@ import { useDispatch } from "react-redux";
 import { usePageData } from "../services/usePageData";
 import { setPage } from "../slice/pageSlice";
 import "./styles.css";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 export const Tiptap = () => {
+  const { t } = useTranslation();
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isAddingNewLink, setIsAddingNewLink] = useState(false);
@@ -58,8 +61,17 @@ export const Tiptap = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleContentUpdate]);
 
+  useEffect(() => {
+    if (editor !== null) {
+      editor.extensionManager.extensions.filter(
+          (extension) => extension.name === "placeholder"
+      )[0].options["placeholder"] = t("Type '/' for commands");
+      editor.view.dispatch(editor.state.tr);
+    }
+  }, [i18n.language]);
+
   const editor = useEditor({
-    extensions: getExtensions({ openLinkModal }),
+    extensions: getExtensions({ openLinkModal, t }),
     editorProps: {
       attributes: {
         class: `main-editor`,

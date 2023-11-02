@@ -116,7 +116,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ open, onClose }) => {
             </div>
           </div>
           <div className={`${styles.workspace}`}>
-            <div className={`${styles.title}`}>Workspace</div>
+            <div className={`${styles.title}`}>{t('Workspace')}</div>
             <div
               className={`${styles.tabs} ${
                 activeTab === "settings" ? styles.active : ""

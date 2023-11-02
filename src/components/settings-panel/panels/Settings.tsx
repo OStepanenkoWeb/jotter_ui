@@ -209,7 +209,7 @@ const Settings = () => {
                   <button type="submit">{t('Change name')}</button>
                 </form>
                 <p>
-                  You can use your organization or company name. Keep it simple.
+                  {t('Change name description')}.
                 </p>
               </div>
             </div>
@@ -217,7 +217,7 @@ const Settings = () => {
             <br />
             <div className={`${styles.value_control}`}>
               <div className={`${styles.key}`}>
-                <p>Icon</p>
+                <p>{t('Icon')}</p>
                 <div
                   className={`${styles.emoji_display}`}
                   onClick={() => setOpenPicker(true)}
@@ -230,12 +230,11 @@ const Settings = () => {
                   />
                 </div>
                 <p>
-                  Upload an image or pick an emoji. It will show up in your
-                  sidebar and notifications.
+                  {t('Icon upload description')}.
                 </p>
               </div>
               <div className={`${styles.control} ${styles.valid_button}`}>
-                <button onClick={handleIconChange}>Set Icon</button>
+                <button onClick={handleIconChange}>{t('Set Icon')}</button>
               </div>
             </div>
             <br />
@@ -245,26 +244,23 @@ const Settings = () => {
           </div>
         </div>
         <div>
-          <div className={`${styles.title}`}>Public settings</div>
+          <div className={`${styles.title}`}>{t('Public settings')}</div>
           <div className={`${styles.body}`}>
             <div className={`${styles.value_control}`}>
               <div className={`${styles.key}`}>
-                <p>Domain</p>
+                <p>{t('Domain')}</p>
                 <p>
-                  Pages shared to web will be under
-                  endurable-part-ridge-afb.notion.site. Anyone with an allowed
-                  email domain can join this workspace via
-                  www.notion.so/endurable-part-ridge-afb.
+                  {t('Domain description')}.
                 </p>
               </div>
             </div>
             <div className={`${styles.value_control}`}>
               <div className={`${styles.key}`}>
-                <p>Danger zone</p>
-                <p>Delete Entire Workspace</p>
+                <p>{t('Danger zone')}</p>
+                <p>{t('Delete Entire Workspace')}</p>
               </div>
               <div className={`${styles.danger_button}`}>
-                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleDelete}>{t('Delete')}</button>
               </div>
             </div>
           </div>

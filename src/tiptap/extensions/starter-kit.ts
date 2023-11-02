@@ -36,9 +36,10 @@ import { v4 } from "uuid";
 
 interface GetExtensionsProps {
   openLinkModal: () => void;
+  t: (str: string) => string;
 }
 
-export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
+export const getExtensions = ({ openLinkModal, t }: GetExtensionsProps) => {
   return [
     // Necessary
     Document,
@@ -85,7 +86,7 @@ export const getExtensions = ({ openLinkModal }: GetExtensionsProps) => {
 
     // Placeholder
     Placeholder.configure({
-      placeholder: "Type '/' for commands",
+      placeholder: t("Type '/' for commands"),
       includeChildren: true,
     }),
 

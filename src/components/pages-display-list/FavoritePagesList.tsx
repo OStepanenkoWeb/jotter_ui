@@ -11,9 +11,11 @@ import { useDispatch } from "react-redux";
 import { setPage } from "../../slice/pageSlice";
 import { NavLink } from "react-router-dom";
 import { checkSameWorkspace } from "../../utils/checkSameWorkspace";
+import { useTranslation } from "react-i18next";
 
 const FavoritePagesList = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const dragItem = React.useRef<any>(null);
   const dragOverItem = React.useRef<any>(null);
   const workspaceInfo = useAppSelector(
@@ -150,7 +152,7 @@ const FavoritePagesList = () => {
   return (
     <>
       <div className={`${styles.display_container} ${styles[theme]}`}>
-        <div className={`${styles.title}`}>Favorites</div>
+        <div className={`${styles.title}`}>{t('Favorites')}</div>
         {pagesMetaData?.map((item, index) => (
           <div
             className={`${styles.page_tab} 

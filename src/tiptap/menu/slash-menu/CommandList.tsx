@@ -8,6 +8,7 @@ import React, {
 import { stopPrevent } from "../../utils/eventModifier";
 import styles from "./commandList.module.scss";
 import { ThemeContext } from "../../../context/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 interface CommandListProps {
   items: any[];
@@ -17,6 +18,7 @@ interface CommandListProps {
 export const CommandList = React.forwardRef(
   ({ items, command }: CommandListProps, ref) => {
     const { theme } = useContext(ThemeContext);
+    const { t } = useTranslation();
     const [selectedIndex, setSelectedIndex] = useState(0);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -97,7 +99,7 @@ export const CommandList = React.forwardRef(
         className={`${styles.items} ${styles[theme]}`}
         ref={scrollContainerRef}
       >
-        <div className={`${styles.bubble_menu_dropdown}`}>Basic blocks</div>
+        <div className={`${styles.bubble_menu_dropdown}`}>{t('Basic blocks')}</div>
         {items.length ? (
           <>
             {items.map((item, index) => {
@@ -117,8 +119,8 @@ export const CommandList = React.forwardRef(
                 >
                   <img src={item.img} alt="Text" width="48" height="48" />
                   <div className={`${styles.info}`}>
-                    <div className={`${styles.title}`}>{item.title}</div>
-                    <div className={`${styles.description}`}>{item.desc}</div>
+                    <div className={`${styles.title}`}>{t(item.title)}</div>
+                    <div className={`${styles.description}`}>{t(item.desc)}</div>
                   </div>
                 </div>
               );
@@ -126,7 +128,7 @@ export const CommandList = React.forwardRef(
           </>
         ) : (
           <div className={`${styles.item}`}>
-            <div className={`${styles.no_result}`}>No result</div>
+            <div className={`${styles.no_result}`}>{t('No result')}</div>
           </div>
         )}
       </div>

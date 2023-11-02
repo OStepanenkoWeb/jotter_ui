@@ -2,22 +2,22 @@ import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { ReactComponent as RightArrowIcon } from "../../../assets/icons/right-arrow.svg";
 import styles from "./account.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Members = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <div className={`${styles.panel} ${styles[theme]}`}>
       <div>
-        <div className={`${styles.title}`}>Members</div>
+        <div className={`${styles.title}`}>{t('Members')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Invite link</p>
+              <p>{t('Invite link')}</p>
               <p>
-                Share this secret link to invite people to this workspace. Only
-                users who can invite members can see this. You can reset the
-                link for all space members to generate a new invite link.
+                {t('Invite link description')}.
               </p>
             </div>
             <div className={`${styles.control}`}>
@@ -30,12 +30,9 @@ const Members = () => {
           <div className={`${styles.divider}`}></div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Members</p>
+              <p>{t('Members')}</p>
               <p>
-                Manage members here, or set up a domain, so everyone with
-                allowed email domains can join the workspace automatically. You
-                will be charged for each member added. Visit our guide for more
-                information on how we bill.
+                {t('Members description')}.
               </p>
             </div>
             <div
