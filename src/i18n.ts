@@ -39,6 +39,16 @@ const resources = {
     },
     ru: {
         translation: {
+            'Login': 'Войти',
+            'Already have an account?': 'У вас уже есть аккаунт?',
+            'Enter your full name': 'Введите свое имя',
+            'your name': 'Имя',
+            'Sign Up': 'Зарегестрироваться',
+            'Register': 'Регистрация',
+            'Enter your email address': 'Введите ваш email',
+            'Enter your password': 'Введите ваш пароль',
+            'Create New Account': 'Создать новый аккаунт',
+            'Log in': 'Авторизация',
             'Settings': 'Настройка',
             'Language & region': 'Язык & регион',
             'Language': 'Язык',
