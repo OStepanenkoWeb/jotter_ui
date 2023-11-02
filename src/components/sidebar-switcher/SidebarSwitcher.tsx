@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import twemoji from "twemoji";
+import { useContext, useState } from "react";
 import { ReactComponent as ExpandIcon } from "../../assets/icons/expand.svg";
 import SwitcherDropdown from "./SwitcherDropdown";
 import { useAppSelector } from "../../app/hooks";
@@ -9,27 +8,10 @@ import { ReactComponent as SedoLogo } from "../../assets/icons/sedo.svg";
 
 const SidebarSwitcher = () => {
   const { theme } = useContext(ThemeContext);
-  const [workspaceEmoji, setWorkspaceEmoji] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const workspaceInfo = useAppSelector(
     (state) => state.workspace.workspaceInfo
   );
-
-  useEffect(() => {
-    const unified = workspaceInfo?.icon;
-
-    const emojiImage = twemoji.parse(
-      `https://twemoji.maxcdn.com/v/latest/72x72/${unified}.png`
-    );
-
-    setWorkspaceEmoji(emojiImage);
-  }, [workspaceInfo?.icon]);
-
-  const handleBrokenImage = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src =
-      "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f1e6.png";
-    e.currentTarget.onerror = null;
-  };
 
   return (
     <>

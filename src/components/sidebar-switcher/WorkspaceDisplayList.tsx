@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import twemoji from "twemoji";
 import { ReactComponent as DragHandleIcon } from "../../assets/icons/drag-handle.svg";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useAppSelector } from "../../app/hooks";
@@ -85,20 +84,6 @@ const WorkspaceDisplayList: React.FC<WorkspaceDisplayListProps> = ({
         }
       },
     });
-  };
-
-  const getEmojiUrl = (unified: string) => {
-    const emojiImage = twemoji.parse(
-      `https://twemoji.maxcdn.com/v/latest/72x72/${unified}.png`
-    );
-
-    return emojiImage;
-  };
-
-  const handleBrokenImage = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src =
-      "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f1e6.png";
-    e.currentTarget.onerror = null;
   };
 
   useEffect(() => {
