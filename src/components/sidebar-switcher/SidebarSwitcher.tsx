@@ -5,6 +5,7 @@ import SwitcherDropdown from "./SwitcherDropdown";
 import { useAppSelector } from "../../app/hooks";
 import styles from "./sidebarSwitcher.module.scss";
 import { ThemeContext } from "../../context/ThemeContext";
+import { ReactComponent as SedoLogo } from "../../assets/icons/sedo.svg";
 
 const SidebarSwitcher = () => {
   const { theme } = useContext(ThemeContext);
@@ -39,11 +40,7 @@ const SidebarSwitcher = () => {
         }}
       >
         <div className={`${styles.icon}`}>
-          <img
-            src={workspaceEmoji!}
-            alt=""
-            onError={(e) => handleBrokenImage(e)}
-          />
+          <SedoLogo />
         </div>
         <div className={`${styles.name}`}>{workspaceInfo?.name}</div>
         <div className={`${styles.expand}`}>

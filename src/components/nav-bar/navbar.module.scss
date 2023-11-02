@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: $background-secondary;
+  background-color: $background-secondary-blue;
   height: 45px;
 
   .path {
@@ -26,7 +26,7 @@
     .edited_at {
       font-size: 14px;
       margin-right: 16px;
-      color: $color-primary;
+      color: $color-tertiary;
     }
 
     .share {
@@ -34,7 +34,7 @@
         cursor: not-allowed;
         margin: 4px 8px;
         padding: 8px 4px;
-        color: $dark-color-tertiary;
+        color: $dark-background-primary;
         font-size: 14px;
         border-radius: 2px;
 
@@ -60,7 +60,7 @@
       align-self: center;
       margin-left: 8px;
       padding: 4px;
-      fill: $dark-color-secondary;
+      fill: $dark-background-primary;
       border-radius: 2px;
       cursor: pointer;
 

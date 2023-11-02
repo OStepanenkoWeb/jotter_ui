@@ -26,7 +26,7 @@
 
   .separator {
     font-size: 14px;
-    color: $dark-color-primary;
+    color: $dark-color-tertiary;
 
     &:last-child {
       display: none;
@@ -52,10 +52,10 @@
   margin: 0 10px;
   display: flex;
   align-items: center;
-  color: $color-primary;
+  color: $color-tertiary;
 
   .icon {
-    fill: $color-primary;
+    fill: $color-tertiary;
   }
 }
 

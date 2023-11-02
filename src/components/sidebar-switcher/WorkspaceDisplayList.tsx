@@ -11,6 +11,7 @@ import styles from "./workspaceDisplayList.module.scss";
 import { useWorkspaceData } from "../../services/useWorkspaceData";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../../slice/userSlice";
+import { ReactComponent as SedoLogo } from "../../assets/icons/sedo.svg";
 
 type WorkspaceDisplayListProps = {
   onClose: () => void;
@@ -143,12 +144,7 @@ const WorkspaceDisplayList: React.FC<WorkspaceDisplayListProps> = ({
               <DragHandleIcon />
             </div>
             <div className={`${styles.workspace_icon}`}>
-              <img
-                src={getEmojiUrl(item.workspaceIcon!)}
-                onError={(e) => handleBrokenImage(e)}
-                alt=""
-                draggable="false"
-              />
+              <SedoLogo />
             </div>
             <div
               className={`${styles.workspace_title}`}

@@ -10,9 +10,9 @@
   user-select: none;
 
   .icon {
-    img {
-      width: 16px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .name {
