@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { ReactComponent as NotionLogo } from "../../assets/icons/notion-logo.svg";
+import { ReactComponent as Documino } from "../../assets/icons/documino.svg";
 import RegisterPanel from "../../components/register-panel";
 import styles from "./register.module.scss";
 
@@ -10,8 +10,7 @@ const Register = () => {
   return (
     <div className={`${styles.container} ${styles[theme]}`}>
       <div className={`${styles.nav}`}>
-        <NotionLogo data-testid="notion-logo" className={`${styles.logo}`} />
-        <p>Notion</p>
+        <Documino data-testid="logo" className={`${styles.logo}`} />
       </div>
       <div className={`${styles.panel}`}>
         <RegisterPanel />
