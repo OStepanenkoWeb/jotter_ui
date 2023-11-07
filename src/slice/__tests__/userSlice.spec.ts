@@ -20,6 +20,7 @@ describe("user reducer", () => {
           favorites: [],
         },
       ],
+      locale: 'ru'
     },
   };
 
@@ -46,6 +47,7 @@ describe("user reducer", () => {
             favorites: [],
           },
         ],
+        locale: 'ru'
       })
     );
 

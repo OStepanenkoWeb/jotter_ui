@@ -10,9 +10,11 @@ import SettingsPanel from "../settings-panel";
 import styles from "./optionsPanel.module.scss";
 import CreatePagePanel from "../create-Page-panel/CreatePagePanel";
 import SearchPanel from "../../features/search";
+import { useTranslation } from "react-i18next";
 
 const OptionsPanel = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [openUpdatePanel, setOpenUpdatePanel] = useState(false);
   const [openSettingsPanel, setOpenSettingsPanel] = useState(false);
   const [openCreatePage, setOpenCreatePage] = useState(false);
@@ -30,7 +32,7 @@ const OptionsPanel = () => {
           <div className={`${styles.icon}`}>
             <SearchIcon />
           </div>
-          <p>Search</p>
+          <p>{t('Search')}</p>
         </div>
         <div
           className={`${styles.tabs}`}
@@ -41,13 +43,13 @@ const OptionsPanel = () => {
           <div className={`${styles.icon}`}>
             <UpdatesIcon />
           </div>
-          <p>Updates</p>
+          <p>{t('Updates')}</p>
         </div>
         <div className={`${styles.tabs} ${styles.invalid}`}>
           <div className={`${styles.icon}`}>
             <TeamspacesIcon />
           </div>
-          <p title="Time mocks my plans">All teamspaces</p>
+          <p title="Time mocks my plans">{t('All teamspaces')}</p>
         </div>
         <div
           className={`${styles.tabs}`}
@@ -58,7 +60,7 @@ const OptionsPanel = () => {
           <div className={`${styles.icon}`}>
             <SettingsIcon />
           </div>
-          <p>Settings & members</p>
+          <p>{t('Settings & members')}</p>
         </div>
         <div
           className={`${styles.tabs}`}
@@ -69,7 +71,7 @@ const OptionsPanel = () => {
           <div className={`${styles.icon}`}>
             <CirclePlusIcon />
           </div>
-          <p>New page</p>
+          <p>{t('New page')}</p>
         </div>
       </div>
       <UpdatePanel

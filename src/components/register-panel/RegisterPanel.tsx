@@ -13,6 +13,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import styles from "./registerPanel.module.scss";
 import { setPage } from "../../slice/pageSlice";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RegisterPanel = () => {
   const { theme } = useContext(ThemeContext);
@@ -26,6 +27,7 @@ const RegisterPanel = () => {
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  const { t } = useTranslation();
   const isDarkMode = useThemeDetector();
   const { mutate } = useUserData.useRegisterUserData();
   const dispatch = useDispatch();
@@ -114,36 +116,36 @@ const RegisterPanel = () => {
 
   return (
     <div className={`${styles.register_panel} ${styles[theme]}`}>
-      <h1>Register</h1>
+      <h1>{t('Register')}</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{t('your name')}</label>
         <input
           id="name"
           type="text"
           value={name}
-          placeholder="Enter your full name..."
+          placeholder={`${t('Enter your full name')}...`}
           onChange={handleNameChange}
         />
         {formErrors.name && (
           <p className={`${styles.error}`}>{formErrors.name}</p>
         )}
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{t('Email')}</label>
         <input
           id="email"
           type="text"
           value={email}
-          placeholder="Enter your email address..."
+          placeholder={`${t('Enter your email address')}...`}
           onChange={handleEmailChange}
         />
         {formErrors.email && (
           <p className={`${styles.error}`}>{formErrors.email}</p>
         )}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('Password')}</label>
         <input
           id="password"
           type="password"
           value={password}
-          placeholder="Enter your password..."
+          placeholder={`${t('Enter your password')}...`}
           onChange={handlePasswordChange}
         />
         {formErrors.password && (
@@ -154,12 +156,12 @@ const RegisterPanel = () => {
           disabled={isSubmitting}
           style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
         >
-          Sign up
+          {t('Sign Up')}
         </button>
         <br />
       </form>
       {error && <p className={`${styles.error}`}>{error}</p>}
-      <p>Already have an account?</p> <Link to="/login">Login</Link>
+      <p>{t('Already have an account?')}</p> <Link to="/login">{t('Login')}</Link>
     </div>
   );
 };

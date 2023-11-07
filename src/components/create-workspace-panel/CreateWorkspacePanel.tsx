@@ -14,9 +14,9 @@ import { useWorkspaceData } from "../../services/useWorkspaceData";
 import { useNavigate } from "react-router-dom";
 
 type CreateWorkspacePanelProps = {
-  createWorkspaceOnClose: () => void;
-  headerOnClose: () => void;
-  onCloseSwitcherDropDown: () => void;
+  createWorkspaceOnClose?: () => void;
+  headerOnClose?: () => void;
+  onCloseSwitcherDropDown?: () => void;
 };
 
 const CreateWorkspacePanel: React.FC<CreateWorkspacePanelProps> = ({
@@ -104,9 +104,9 @@ const CreateWorkspacePanel: React.FC<CreateWorkspacePanelProps> = ({
           navigate(`/${page.data.reference}`);
 
           setName("");
-          createWorkspaceOnClose();
-          headerOnClose();
-          onCloseSwitcherDropDown();
+          if(createWorkspaceOnClose) createWorkspaceOnClose();
+          if(headerOnClose) headerOnClose();
+          if(onCloseSwitcherDropDown) onCloseSwitcherDropDown();
         }
       },
     });

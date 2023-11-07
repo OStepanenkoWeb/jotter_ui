@@ -11,6 +11,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { setPage } from "../../slice/pageSlice";
 import styles from "./loginPanel.module.scss";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const LoginPanel = () => {
   const { theme } = useContext(ThemeContext);
@@ -21,6 +22,7 @@ const LoginPanel = () => {
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  const { t } = useTranslation();
   const { mutate } = useUserData.useLoginUserData();
   const dispatch = useDispatch();
 
@@ -93,25 +95,25 @@ const LoginPanel = () => {
 
   return (
     <div className={`${styles.login_panel} ${styles[theme]}`}>
-      <h1>Log in</h1>
+      <h1>{t('Log in')}</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
           id="email"
           type="text"
           value={email}
-          placeholder="Enter your email address..."
+          placeholder={`${t('Enter your email address')}...`}
           onChange={handleEmailChange}
         />
         {formErrors.email && (
           <p className={`${styles.error}`}>{formErrors.email}</p>
         )}
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{t('Password')}</label>
         <input
           id="password"
           type="password"
           value={password}
-          placeholder="Enter your password..."
+          placeholder={`${t('Enter your password')}...`}
           onChange={handlePasswordChange}
         />
         {formErrors.password && (
@@ -122,12 +124,12 @@ const LoginPanel = () => {
           disabled={isSubmitting}
           style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
         >
-          Log in
+          {t('Login')}
         </button>
         <br />
       </form>
       {error && <p className={`${styles.error}`}>{error}</p>}
-      <Link to="/register">Create New Account</Link>
+      <Link to="/register">{t('Create New Account')}</Link>
     </div>
   );
 };

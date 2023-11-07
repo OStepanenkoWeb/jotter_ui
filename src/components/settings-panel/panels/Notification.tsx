@@ -6,9 +6,11 @@ import { useUserData } from "../../../services/useUserData";
 import { useAppSelector } from "../../../app/hooks";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../../slice/userSlice";
+import { useTranslation } from "react-i18next";
 
 const Notification = () => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const userInfo = useAppSelector((state) => state.user.userInfo);
   const [mode, setMode] = useState("");
   const { mutate: mutateIsDarkMode } = useUserData.useUpdateIsDarkModeData();
@@ -87,14 +89,13 @@ const Notification = () => {
   return (
     <div className={`${styles.panel} ${styles[theme]}`}>
       <div>
-        <div className={`${styles.title}`}>My notifications</div>
+        <div className={`${styles.title}`}>{t('My notifications')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Mobile push notifications</p>
+              <p>{t('Mobile push notifications')}</p>
               <p>
-                Receive push notifications on mentions and comments via your
-                mobile app
+                {t('Receive push notifications')}
               </p>
             </div>
             <div className={`${styles.control}`}>
@@ -106,9 +107,9 @@ const Notification = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Email notifications</p>
+              <p>{t('Email notifications')}</p>
               <p>
-                Receive email updates, including mentions and comment replies
+                {t('Receive email updates')}
               </p>
             </div>
             <div className={`${styles.control}`}>
@@ -120,17 +121,16 @@ const Notification = () => {
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Slack notifications</p>
+              <p>{t('Slack notifications')}</p>
               <p>
-                Receive notifications in your Slack workspace when you're
-                mentioned in a page, database property, or comment
+                {t('Receive notifications')}
               </p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.select}`}>
                 <select name="slack_notification" id="slack" disabled>
-                  <option value="off">Off</option>
-                  <option value="on">On</option>
+                  <option value="off">{t('Off')}</option>
+                  <option value="on">{t('On')}</option>
                 </select>
               </label>
             </div>
@@ -138,12 +138,12 @@ const Notification = () => {
         </div>
       </div>
       <div>
-        <div className={`${styles.title}`}>My settings</div>
+        <div className={`${styles.title}`}>{t('My settings')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Appearance</p>
-              <p>Customize how Notion looks on your device.</p>
+              <p>{t('Appearance')}</p>
+              <p>{t('Customize how Notion looks on your device')}.</p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.select} ${styles.valid}`}>
@@ -153,26 +153,25 @@ const Notification = () => {
                   value={mode}
                   onChange={handleAppearance}
                 >
-                  <option value="system">System</option>
-                  <option value="dark">Dark</option>
-                  <option value="light">Light</option>
+                  <option value="system">{t('System')}</option>
+                  <option value="dark">{t('Dark')}</option>
+                  <option value="light">{t('Light')}</option>
                 </select>
               </label>
             </div>
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Open on start</p>
+              <p>{t('Open on start')}</p>
               <p>
-                Choose what to show when Notion starts or when you switch
-                workspaces.
+                {t('Choose what to show')}
               </p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.select}`}>
                 <select name="open_on_start" id="open_on_start" disabled>
-                  <option value="system">Last</option>
-                  <option value="off">Top</option>
+                  <option value="system">{t('Last')}</option>
+                  <option value="off">{t('Top')}</option>
                 </select>
               </label>
             </div>
@@ -180,44 +179,43 @@ const Notification = () => {
         </div>
       </div>
       <div>
-        <div className={`${styles.title}`}>Privacy</div>
+        <div className={`${styles.title}`}>{t('Privacy')}</div>
         <div className={`${styles.body}`}>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Cookie settings</p>
+              <p>{t('Cookie settings')}</p>
               <p>
-                Customize cookies. See{" "}
+                {t('Customize cookies')}. {t('See')}{" "}
                 <span>
                   <a
                     href="https://www.notion.so/Cookie-Notice-bc186044eed5488a8387a9e94b14e58c"
                     target="blank"
                   >
-                    Cookie Notice
+                    {t('Cookie Notice')}
                   </a>
                 </span>{" "}
-                for details.
+                {t('for details')}.
               </p>
             </div>
             <div className={`${styles.control}`}>
               <label className={`${styles.select}`}>
                 <select name="cookie" id="cookie" disabled>
-                  <option value="customize">Customize</option>
+                  <option value="customize">{t('Customize')}</option>
                 </select>
               </label>
             </div>
           </div>
           <div className={`${styles.value_control}`}>
             <div className={`${styles.key}`}>
-              <p>Show my view history</p>
+              <p>{t('Show my view history')}</p>
               <p>
-                People with edit or full access will be able to see when you’ve
-                viewed a page.{" "}
+                {t('People with edit')}.{" "}
                 <span>
                   <a
                     href="https://www.notion.so/help/page-analytics"
                     target="blank"
                   >
-                    Learn more.
+                    {t('Learn more')}.
                   </a>
                 </span>
                 .
@@ -226,8 +224,8 @@ const Notification = () => {
             <div className={`${styles.control}`}>
               <label className={`${styles.select}`}>
                 <select name="record" id="record" disabled>
-                  <option value="record">Record</option>
-                  <option value="dont">Don't</option>
+                  <option value="record">{t('Record')}</option>
+                  <option value="dont">{t('Don\'t')}</option>
                 </select>
               </label>
             </div>

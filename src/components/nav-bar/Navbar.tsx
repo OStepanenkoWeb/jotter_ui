@@ -18,6 +18,7 @@ import { PageType } from "../../common/types/Page";
 import { setPage } from "../../slice/pageSlice";
 import { setUser } from "../../slice/userSlice";
 import { request } from "../../lib/axios";
+import { useTranslation } from "react-i18next";
 
 type FavoritePageType = {
   id: string;
@@ -30,6 +31,7 @@ type FavoritePageType = {
 
 const Navbar = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const { leftOpen, toggleSidebar } = useContext(SidebarLogicContext);
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
   const userInfo = useAppSelector((state) => state.user.userInfo);
@@ -48,7 +50,7 @@ const Navbar = () => {
 
   const formatedTime = (createdAt: Date) => {
     const time = getFormattedTimeDifference(createdAt, currentTime);
-    return time;
+    return time.replaceAll('just now', t('just now')).split(' ').map(part => t(part)).join(' ');
   };
 
   useEffect(() => {
@@ -137,14 +139,14 @@ const Navbar = () => {
         <div id="options" className={`${styles.main_options}`}>
           <div className={`${styles.edited_at}`}>
             <p>
-              Edited{" "}
+              {t('Edited')}{" "}
               {pageInfo?.updatedAt
                 ? formatedTime(pageInfo.updatedAt)
                 : formatedTime(pageInfo?.createdAt!)}
             </p>
           </div>
           <div className={`${styles.share}`}>
-            <p>Share</p>
+            <p>{t('Share')}</p>
           </div>
           <div
             id="comment"

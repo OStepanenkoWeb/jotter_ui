@@ -19,9 +19,11 @@ import { getRandomPhoto } from "../../utils/randomImage";
 import { useNavigate, useParams } from "react-router-dom";
 import Tiptap from "../../tiptap";
 import ProjectInfo from "./ProjectInfo";
+import { useTranslation } from "react-i18next";
 
 const PageBody = () => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const { leftOpen, rightOpen } = useContext(SidebarLogicContext);
   const [openPicker, setOpenPicker] = useState(false);
   const pageInfo = useAppSelector((state) => state.page.pageInfo);
@@ -301,13 +303,13 @@ const PageBody = () => {
                 setOpenChangeCover(true);
               }}
             >
-              Change cover
+              {t('Change cover')}
             </div>
             <div
               className={`${styles.image_option}`}
               onClick={handleReposition}
             >
-              {repositionEnabled ? "Save" : "Reposition"}
+              {t(repositionEnabled ? "Save" : "Reposition")}
             </div>
           </div>
         ) : (
@@ -340,7 +342,7 @@ const PageBody = () => {
             {pageInfo?.coverPicture.url === "" ? (
               <div className={`${styles.add_button}`} onClick={handleAddCover}>
                 <AddCoverIcon />
-                <p>Add cover</p>
+                <p>{t('Add cover')}</p>
               </div>
             ) : (
               ""

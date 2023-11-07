@@ -6,9 +6,12 @@ import { Editor } from "@tiptap/core";
 import { debounce } from "lodash";
 import { NewPageContext } from "../context/NewPageContext";
 import "./styles.css";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 export const NewPageTiptap = () => {
   const { content, setContent, pageSettings } = useContext(NewPageContext);
+  const { t } = useTranslation();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isAddingNewLink, setIsAddingNewLink] = useState(false);
   const openLinkModal = () => setIsAddingNewLink(true);
@@ -37,7 +40,7 @@ export const NewPageTiptap = () => {
   }, [handleContentUpdate]);
 
   const editor = useEditor({
-    extensions: getExtensions({ openLinkModal }),
+    extensions: getExtensions({ openLinkModal, t }),
     editorProps: {
       attributes: {
         class: `main-editor`,
@@ -60,6 +63,15 @@ export const NewPageTiptap = () => {
     return () => clearTimeout(timeoutId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (editor !== null) {
+      editor.extensionManager.extensions.filter(
+          (extension) => extension.name === "placeholder"
+      )[0].options["placeholder"] = t("Type '/' for commands");
+      editor.view.dispatch(editor.state.tr);
+    }
+  }, [i18n.language]);
 
   return (
     editor && (

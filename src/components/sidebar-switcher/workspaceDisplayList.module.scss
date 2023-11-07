@@ -23,16 +23,16 @@
       }
 
       .workspace_icon {
-        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 26px;
         height: 26px;
-
-        img {
-          width: 26px;
-        }
       }
 
       .workspace_title {
+        display: flex;
+        align-items: center;
         color: $dark-color-tertiary;
         font-size: 14px;
       }

@@ -9,6 +9,7 @@ import { request } from "../../lib/axios";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../slice/pageSlice";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type SearchDisplayProps = {
   data: PageType[];
@@ -17,6 +18,7 @@ type SearchDisplayProps = {
 
 const SearchDisplay: React.FC<SearchDisplayProps> = ({ data, onClose }) => {
   const { theme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const [currentTime, setCurrentTime] = useState(moment());
   const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ const SearchDisplay: React.FC<SearchDisplayProps> = ({ data, onClose }) => {
 
   const formatedTime = (createdAt: Date) => {
     const time = getFormattedTimeDifference(createdAt, currentTime);
-    return time;
+    return time.replaceAll('just now', t('just now')).split(' ').map(part => t(part)).join(' ');
   };
 
   const handleOnClick = async (id: string) => {
