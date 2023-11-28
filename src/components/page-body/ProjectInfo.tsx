@@ -29,57 +29,16 @@ const ProjectInfo: React.FC<ProjectInfoProps> = ({ open, onClose }) => {
             e.stopPropagation();
           }}
         >
-          <div className={`${styles.title}`}>Engineer profile</div>
+          <div className={`${styles.title}`}>Информация о проекте</div>
           <a
-            href="https://shreyasmanolkar.com"
+            href="/"
             target="blank"
             className={`${styles.tab}`}
           >
             <div className={`${styles.img}`}>
-              <img src={websiteImg} alt="website" />
+              <img src={websiteImg} alt="Информация" />
             </div>
-            <div className={`${styles.info}`}>Shreyas Manolkar</div>
-          </a>
-          <a
-            href="https://github.com/shreyasmanolkar"
-            target="blank"
-            className={`${styles.tab}`}
-          >
-            <div className={`${styles.img}`}>
-              <img src={githubImg} alt="github" />
-            </div>
-            <div className={`${styles.info}`}>Git Hub</div>
-          </a>
-          <a
-            href="https://twitter.com/ShreyasManolkar"
-            target="blank"
-            className={`${styles.tab}`}
-          >
-            <div className={`${styles.img}`}>
-              <img src={twitterImg} alt="twitter" />
-            </div>
-            <div className={`${styles.info}`}>Twitter</div>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/shreyas-manolkar/"
-            target="blank"
-            className={`${styles.tab}`}
-          >
-            <div className={`${styles.img}`}>
-              <img src={linkedInImg} alt="linkedIn" />
-            </div>
-            <div className={`${styles.info}`}>LinkedIn</div>
-          </a>
-          {/* TODO: update resume */}
-          <a
-            href="https://shreyasmanolkar.com/assets/Resume2.1.pdf"
-            target="blank"
-            className={`${styles.tab}`}
-          >
-            <div className={`${styles.img}`}>
-              <img src={cvImg} alt="Curriculum vitae" />
-            </div>
-            <div className={`${styles.info}`}>Curriculum Vitae</div>
+            <div className={`${styles.info}`}>Информация</div>
           </a>
         </div>
       </div>
